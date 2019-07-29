@@ -1,54 +1,10 @@
 #!/usr/bin/python3
-#import Source.ListaSimple
-
-#definiendo metodo para hacer el ciclo de perdir un numero entero en la opcion del menu
-def pedir_numero_entero():
-    correcto = False
-    num = 0
-    while(not correcto):
-        try:
-            num = int(input("Introduce una opcion: "))
-            correcto = True
-        except ValueError:
-            ("Introduce la opcion correcta! ")      
-    return num
-salir = False
-opcion = 0
-
-
-#cilo de opciones dependiente de la opcion a elegir  
-while not salir:
-    print("1    Insertar al inicio")
-    print("2    Insertar al final")
-    print("3    Buscar Elemento")
-    print("4    Eliminar Elemento")
-    print("5    Imprimir la lista")
-    print("6    Salir")
-    print("Elige una opcion")
-    opcion =  pedir_numero_entero()
-
-    if opcion == 1:
-        print("Insertar al inicio")
-    elif opcion == 2:
-        print("Insertar al final")
-    elif opcion == 3:
-        print("Buscar Elemento")
-    elif opcion == 4:
-        print("Eliminar Elemento")
-    elif opcion == 5:
-        print("Motrar Todos los Elementos de la lista")     
-    elif opcion == 6:
-        salir = True    
-
-    else:                   
-        print("Introduce un numero entre 1 y 5")
-print("fin de menu")
 
 #Creando la clase Nodo
-#class node:
-#    def __init__(self, data = None, next = None):
-#        self.data = data
-#        self.next = next
+class node(object):
+    def __init__(self, data = None, next = None):
+        self.data = data
+        self.next = next
 
 #creando la lista enlazada
 class ListaSimple:
@@ -100,3 +56,48 @@ class ListaSimple:
         while  node != None:
             print(node.data)
             node = node.next
+
+ls = ListaSimple()
+
+#definiendo metodo para hacer el ciclo de perdir un numero entero en la opcion del menu
+def pedir_numero_entero():
+    correcto = False
+    num = 0
+    while(not correcto):
+        try:
+            num = int(input("Introduce una opcion: "))
+            correcto = True
+        except ValueError:
+            ("Introduce la opcion correcta! ")      
+    return num
+salir = False
+opcion = 0
+
+
+#cilo de opciones dependiente de la opcion a elegir  
+while not salir:
+    print("1    Insertar al inicio")
+    print("2    Insertar al final")
+    print("3    Buscar Elemento")
+    print("4    Eliminar Elemento")
+    print("5    Imprimir la lista")
+    print("6    Salir")
+    print("Elige una opcion")
+    opcion =  pedir_numero_entero()
+
+    if opcion == 1:
+       ls.agrearAlPrincipio(input("Ingrese un numero entero: ")) 
+    elif opcion == 2:
+        ls.agregarAlFinal(input("Ingrese un numero entero: "))
+    elif opcion == 3:
+        print("Buscar Elemento")
+    elif opcion == 4:
+        ls.eliminarNodo(input("Ingrese el numero a eliminar: "))
+    elif opcion == 5:
+        ls.iprimirLista()     
+    elif opcion == 6:
+        salir = True    
+
+    else:                   
+        print("Introduce un numero entre 1 y 5")
+print("fin de menu")
