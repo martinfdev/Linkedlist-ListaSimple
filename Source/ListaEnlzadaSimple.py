@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-
+import sys
 #Creando la clase Nodo
 class node(object):
     def __init__(self, data = None, next = None):
@@ -22,12 +22,13 @@ class ListaSimple:
     #metodo para agregar al final de la lista
     def agregarAlFinal(self, data):
         if not self.head:
-            self.head = node(data = data)
+            self.head = node(data=data)
             return
-            curr = self.head
-            while curr.next:
-                curr = curr.next
-            curr.next = node(data =data)
+           
+        curr = self.head
+        while curr.next:
+            curr = curr.next
+        curr.next = node(data=data)
 
     #metodo para eliminar nodos
     def eliminarNodo(self, key):
@@ -43,21 +44,31 @@ class ListaSimple:
             prev.next = curr.next
             curr.nex = None
         
-    #metodo para obtener el ultlmo nodo
-    def devolverUltimoNodo(self):
+    #metodo buscar nodo
+    def buscarNodo(self, key):
         temp = self.head
-        while (temp.next is not None):
-            temp =  temp.next
-        return temp.data
+        while temp != None and temp.data != key:
+            temp =  temp.next 
+        return temp
 
     #metodo para imprimir la lista
     def iprimirLista(self):
         node = self.head
         while  node != None:
+            
             print(node.data)
             node = node.next
 
-ls = ListaSimple()
+    #metodo modicar valor
+    def modificarNodo(self, key):
+        auxNodo = buscarNodo(key)
+        auxNodo = node(input("Ingrese el nuevo valor: "))
+
+
+
+
+
+ls = ListaSimple() #instanciando la lista
 
 #definiendo metodo para hacer el ciclo de perdir un numero entero en la opcion del menu
 def pedir_numero_entero():
@@ -65,39 +76,44 @@ def pedir_numero_entero():
     num = 0
     while(not correcto):
         try:
-            num = int(input("Introduce una opcion: "))
+            num = int(input("Elige la opcion: "))
             correcto = True
-        except ValueError:
+        except:
             ("Introduce la opcion correcta! ")      
     return num
 salir = False
 opcion = 0
 
 
-#cilo de opciones dependiente de la opcion a elegir  
+#ciclo de opciones dependiente de la opcion a elegir  
 while not salir:
+    print ("-----------------Menu------------------")
     print("1    Insertar al inicio")
     print("2    Insertar al final")
     print("3    Buscar Elemento")
-    print("4    Eliminar Elemento")
-    print("5    Imprimir la lista")
-    print("6    Salir")
-    print("Elige una opcion")
+    print("4    Modificar")
+    print("5    Eliminar Elemento")
+    print("6    Ver lista")
+    print("7    Salir")
     opcion =  pedir_numero_entero()
 
     if opcion == 1:
-       ls.agrearAlPrincipio(input("Ingrese un numero entero: ")) 
+       ls.agrearAlPrincipio(input("Ingrese Valor: ")) 
     elif opcion == 2:
-        ls.agregarAlFinal(input("Ingrese un numero entero: "))
+        ls.agregarAlFinal(input("Ingrese Valor entero: "))
     elif opcion == 3:
-        print("Buscar Elemento")
+        dato = ls.buscarNodo(input("Ingrese el valor a buscar: "))
+        print("El valor es: ", dato.data)
     elif opcion == 4:
-        ls.eliminarNodo(input("Ingrese el numero a eliminar: "))
+        mod = ls.buscarNodo(input("Ingrese el valor a modificar: "))
+        mod.data = input("Ingres el nuevo valor: ")
     elif opcion == 5:
-        ls.iprimirLista()     
+        ls.eliminarNodo(input("Ingrese Valor a eliminar: "))
     elif opcion == 6:
+        ls.iprimirLista()
+    elif opcion == 7:
         salir = True    
 
     else:                   
         print("Introduce un numero entre 1 y 5")
-print("fin de menu")
+print("Programa terminado!!")
