@@ -56,7 +56,7 @@ class ListaSimple:
         node = self.head
         while  node != None:
             
-            print(node.data)
+            print(node.data, end="-> ")
             node = node.next
 
     #metodo modicar valor
