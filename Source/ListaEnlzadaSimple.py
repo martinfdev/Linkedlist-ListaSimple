@@ -1,3 +1,4 @@
+
 #!/usr/bin/python3
 import sys
 #Creando la clase Nodo
@@ -87,6 +88,8 @@ opcion = 0
 
 #ciclo de opciones dependiente de la opcion a elegir  
 while not salir:
+    
+    print("")
     print ("-----------------Menu------------------")
     print("1    Insertar al inicio")
     print("2    Insertar al final")
